@@ -46,7 +46,47 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="introduction">Introduction</h1>
+        <h1 id="how-to-deploy-rc-tutorials-to-github">How to deploy RC tutorials to Github</h1>
+
+<h2 id="fork-slate-and-build">Fork Slate and build</h2>
+
+<ol>
+<li>Fork project <code class="prettyprint">slate</code> from github: https://github.com/tripit/slate</li>
+<li>Clone to local machine for modifications: <code class="prettyprint">git clone https://github.com/agongdai/slate.git</code></li>
+<li><code class="prettyprint">cd slate</code></li>
+<li><code class="prettyprint">bundle install</code>: here may report error:</li>
+</ol>
+
+<blockquote>
+<p>Gem::RemoteFetcher::FetchError: SSL_connect returned=1 errno=0
+state=SSLv3 read server certificate B: certificate verify failed
+(https://rubygems.org/gems/middleman-sprockets-3.4.2.gem) An error occurred while installing middleman-sprockets (3.4.2), and Bundler cannot continue. Make sure that <code class="prettyprint">gem install middleman-sprockets -v &#39;3.4.2&#39;</code> succeeds before bundling.</p>
+</blockquote>
+
+<p>That is because the URL <code class="prettyprint">https://rubygems.org</code> somehow has certificate issue. Change it to <code class="prettyprint">http://rubygems.org</code>: modify the first line of file <code class="prettyprint">Gemfile</code> and <code class="prettyprint">Gemfile.lock</code>.</p>
+
+<h2 id="code-class-prettyprint-code"><code class="prettyprint">json</code> gem error</h2>
+
+<ol>
+<li>When installing <code class="prettyprint">json</code>, an error may occur:
+&gt; ERROR:  Error installing json:
+&gt;     The &lsquo;json&rsquo; native gem requires installed build tools.</li>
+</ol>
+
+<p>Follow the answer of this guy: Massimo Fazzolari. If there are multiple version of Ruby installations, uninstall one of them first. </p>
+
+<p>The version is changed from <code class="prettyprint">1.9.8</code> to <code class="prettyprint">1.9.6</code>.</p>
+
+<h2 id="local-server-build-and-publish">Local server, build and publish</h2>
+
+<ol>
+<li><code class="prettyprint">bundle exec middleman server</code>: start the local server and visit <a href="http://localhost:4567">http://localhost:4567</a>.</li>
+<li><code class="prettyprint">bundle build</code>: make whatever modifications to <code class="prettyprint">source/index.md</code> and commit. Then build the HTML files to folder <code class="prettyprint">build</code>. The file <code class="prettyprint">index.html</code> is the entry point.</li>
+<li>Copy all files in folder <code class="prettyprint">build</code> to the <code class="prettyprint">rc-tutorials</code> folder of project <code class="prettyprint">agongdai.github.io</code>.</li>
+<li>Visite http://agongdai.github.io/rc-tutorials.</li>
+</ol>
+
+<h1 id="introduction">Introduction</h1>
 
 <p>Modified by Carl.</p>
 
