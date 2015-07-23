@@ -13,49 +13,64 @@
 
       <script>
         $(function() {
-          setupLanguages(["shell","ruby","python"]);
+          setupLanguages(["javascript","shell","ruby","python"]);
         });
       </script>
   </head>
 
   <body class="index">
-    <a href="#" id="nav-button">
-      <span>
-        NAV
-        <img src="images/navbar.png" />
-      </span>
-    </a>
-    <div class="rc-dpw-nav">
-      <div class="logo"><img src="images/logo.png" /></div>
-      <ul class="menus">
-        <li><a href="">OVERVIEW</a></li>
-        <li class="active"><a class="menu-link" href="">API & DOCS</a></li>
-        <li><a href="">SUPPORT & FAQS</a></li>
-        <li><a href="">APP GALLERY</a></li>
-        <li><a href="">BLOG</a></li>
-      </ul>
-    </div>
-    <div class="tocify-wrapper">
-        <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-        </div>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
-      <div id="toc">
-      </div>
-        <ul class="toc-footer">
-            <li><a href='http://developers.ringcentral.com' target="_blank">Sign Up</a> for RingCentral for Developers</li>
-            <li>Documentation Powered by <a href='http://github.com/tripit/slate' target="_blank">Slate</a></li>
+    <div class="whole-page-wrapper">
+      <a href="#" id="nav-button">
+        <span>
+          NAV
+          <img src="images/navbar.png" />
+        </span>
+      </a>
+      <div class="rc-dpw-nav">
+        <div class="logo"><img src="images/logo.png" /></div>
+        <ul class="menus">
+          <li><a href="">OVERVIEW</a></li>
+          <li class="active"><a class="menu-link" href="">API & DOCS</a></li>
+          <li><a href="">SUPPORT & FAQS</a></li>
+          <li><a href="">APP GALLERY</a></li>
+          <li><a href="">BLOG</a></li>
         </ul>
-    </div>
-    <div class="page-wrapper">
-      <div class="dark-box"></div>
-      <div class="content">
-        <h1 id="how-to-deploy-rc-tutorials-to-github">How to deploy RC tutorials to Github</h1>
+      </div>
+      <div class="tocify-wrapper">
+          <div class="lang-selector">
+                <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="ruby">ruby</a>
+                <a href="#" data-language-name="python">python</a>
+          </div>
+          <div class="search">
+            <input type="text" class="search" id="input-search" placeholder="Search">
+          </div>
+          <ul class="search-results"></ul>
+        <div id="toc">
+        </div>
+          <ul class="toc-footer">
+              <li><a href='http://developers.ringcentral.com' target="_blank">Sign Up</a> for RingCentral for Developers</li>
+              <li>Documentation Powered by <a href='http://github.com/tripit/slate' target="_blank">Slate</a></li>
+          </ul>
+      </div>
+      <div class="page-wrapper">
+        <div class="dark-box"></div>
+        <div class="content">
+          <h1 id="mockup-code-for-syntax-highlighting">Mockup code for syntax highlighting</h1>
+
+<p>A sample JavaScript code block.</p>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">RC_SERVER_PRODUCTION</span> <span class="o">=</span> <span class="s1">'http://platform.ringcentral.com'</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">RC_SERVER_SANDBOX</span> <span class="o">=</span> <span class="s1">'https://platform.devtest.ringcentral.com'</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">rcsdk</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">RCSDK</span><span class="p">({</span>
+  <span class="na">server</span><span class="p">:</span> <span class="nx">RC_SERVER_SANDBOX</span><span class="p">,</span>
+  <span class="na">appKey</span><span class="p">:</span> <span class="s1">'yourAppKey'</span><span class="p">,</span>
+  <span class="na">appSecret</span><span class="p">:</span> <span class="s1">'yourAppSecret'</span>
+<span class="p">});</span>
+</code></pre>
+
+<h1 id="how-to-deploy-rc-tutorials-to-github">How to deploy RC tutorials to Github</h1>
 
 <h2 id="fork-slate-and-build">Fork Slate and build</h2>
 
@@ -255,7 +270,7 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </tbody></table>
 
-          <h1 id="errors">Errors</h1>
+            <h1 id="errors">Errors</h1>
 
 <aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
 
@@ -313,13 +328,15 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </tbody></table>
 
-      </div>
-      <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-          </div>
+        </div>
+        <div class="dark-box">
+            <div class="lang-selector">
+                  <a href="#" data-language-name="javascript">javascript</a>
+                  <a href="#" data-language-name="shell">shell</a>
+                  <a href="#" data-language-name="ruby">ruby</a>
+                  <a href="#" data-language-name="python">python</a>
+            </div>
+        </div>
       </div>
     </div>
   </body>
