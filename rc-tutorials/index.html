@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>RingCentral API Reference</title>
 
     <link href="stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
@@ -26,7 +26,7 @@
       </span>
     </a>
     <div class="tocify-wrapper">
-      <a class="logo" target="_blank" href="https://developers.ringcentral.com"><img src="images/logo.png" /></a> 
+      <a class="logo" target="_blank" href="https://developers.ringcentral.com"><img src="images/logo.png" /></a>
         <div class="lang-selector">
               <a href="#" data-language-name="http">http</a>
               <a href="#" data-language-name="javascript">javascript</a>
@@ -38,8 +38,8 @@
       <div id="toc">
       </div>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for RingCentral for Developers</a></li>
-            <li><a href='http://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
+            <li><a target="_blank" href='https://developers.ringcentral.com/sign-up.html#/'>Sign Up for RingCentral for Developers</a></li>
+            <li><a target="_blank" href='http://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -286,7 +286,7 @@ Content-Length: 926
 
 <p>The SDK is represented by the global RCSDK constructor. Your application must create an instance of this object.</p>
 
-<p>In order to bootstrap the RingCentral JavaScript SDK, you have to first get a reference to the Platform singleton and then configure it. Before you can do anything using the Platform singleton, you need to configure it with the server URL (this tells the SDK which server to connect to) and your unique API key (this is provided by RingCentral’s developer relations team).</p>
+<p>In order to bootstrap the RingCentral JavaScript SDK, you have to first get a reference to the Platform singleton and then configure it. Before you can do anything using the Platform singleton, you need to configure it with the server URL (this tells the SDK which server to connect to) and your unique API key (this is provided by RingCentral&rsquo;s developer relations team).</p>
 
 <aside class="notice">
 This instance will be used later on to perform calls to API.
@@ -474,7 +474,7 @@ A recommended way to handle access or authentication exceptions is to direct the
 <ul>
 <li>A call may consist of multiple call legs. Top-level telephonyStatus should be aggregated across these multiple call legs. </li>
 <li>A call is identified by its sessionId. For tracking a call, application should match by sessionId across activeCall items from multiple notifications.</li>
-<li>In some rare cases notifications can be delivered in incorrect order. Application should remember largest &ldquo;sequence&rdquo; value from an event for a given call (identified by its sessionId) and ignore any events which come later with smaller &ldquo;sequence&rdquo;</li>
+<li>In some rare cases notifications can be delivered in incorrect order. Application should remember largest &lsquo;sequence&rsquo; value from an event for a given call (identified by its sessionId) and ignore any events which come later with smaller &#39;sequence&rsquo;</li>
 </ul>
 
 <p>Some typical event flows for inbound calls are listed for the following scenarios:</p>
@@ -529,7 +529,7 @@ A recommended way to handle access or authentication exceptions is to direct the
     <span class="p">}</span>
 <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">ajax</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">ajax</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">records</span><span class="p">);</span>
-<span class="p">}.</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">alert</span><span class="p">(</span><span class="s1">'Active Calls Error: '</span> <span class="o">+</span> <span class="nx">e</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre>
@@ -539,8 +539,9 @@ A recommended way to handle access or authentication exceptions is to direct the
 <p>The application may periodically (around 2-5 minutes) poll the active calls endpoint to make sure that even missed event notifications will not affect the application state. The application may also load a list of active calls after receiving event notifications. Please keep in mind that application may exceed RPS limits and will be throttled in this case, so application must handle this situation.</p>
 
 <h2 id="determining-end-of-call">Determining End of Call</h2>
+
 <p>The application is responsible for caching active calls. A common method is to use a session ID to track a call. 
-Your application may gather information about discovered calls and when it sees &ldquo;No Call&rdquo; after &ldquo;Connected&rdquo; status it means that the call has ended. Also the call will disappear from active calls list. See the section below on determining call duration of a recently ended call for more info.</p>
+Your application may gather information about discovered calls and when it sees &#39;No Call&rsquo; after &#39;Connected&rsquo; status it means that the call has ended. Also the call will disappear from active calls list. See the section below on determining call duration of a recently ended call for more info.</p>
 
 <h2 id="call-duration-post-call">Call Duration Post-Call</h2>
 <pre class="highlight javascript"><code><span class="c1">// Determining call duaration of a recently ended call.</span>
@@ -559,7 +560,8 @@ Your application may gather information about discovered calls and when it sees 
 <p>Completed calls will stay in Active Calls for a limited time (few minutes). Use the following code to determine the duration of a recently completed call.</p>
 
 <h2 id="call-and-event-matching">Call and Event Matching</h2>
-<p>To match calls and events from the call log or active calls, use the <code class="prettyprint">sessionId</code> property of calls from events’ active calls array and call log or active calls response.</p>
+
+<p>To match calls and events from the call log or active calls, use the <code class="prettyprint">sessionId</code> property of calls from events&rsquo; active calls array and call log or active calls response.</p>
 
 <h2 id="multiple-concurrent-calls">Multiple Concurrent Calls</h2>
 
@@ -599,7 +601,8 @@ Your application may gather information about discovered calls and when it sees 
 
 <p>By default, the load request returns calls that were made during the last week. To alter the time frame, provide custom query.dateTo and query.dateFrom properties.</p>
 
-View Recently Ended Calls<pre class="highlight javascript"><code><span class="c1">// Getting historical call information</span>
+<h2 id="view-recently-ended-calls">View Recently Ended Calls</h2>
+<pre class="highlight javascript"><code><span class="c1">// Getting historical call information</span>
 <span class="nx">platform</span><span class="p">.</span><span class="nx">apiCall</span><span class="p">({</span>
     <span class="na">url</span><span class="p">:</span> <span class="nx">rcsdk</span><span class="p">.</span><span class="nx">getCallHelper</span><span class="p">().</span><span class="nx">createUrl</span><span class="p">(),</span>
     <span class="na">get</span><span class="p">:</span> <span class="p">{</span> <span class="c1">// this can be omitted</span>
@@ -695,10 +698,11 @@ Completed calls stay in the Call Log for 2 years.
 <p>The RingCentral Connect Platform does not currently support control of outbound calls. However, you can cancel ringout call while callee party status is <code class="prettyprint">InProgress</code>. To do that make a <code class="prettyprint">DELETE</code> request to ringout URI. </p>
 
 <h2 id="outbound-call-statuses">Outbound Call Statuses</h2>
+
 <ul>
 <li>A 2-legged RingOut call is represented in events as an outbound call between <code class="prettyprint">from</code> and <code class="prettyprint">to</code> numbers provided in RingOut API request. </li>
-<li>There is the known issue: notification with <code class="prettyprint">CallConnected</code> status comes after first leg is connected. So actually a call can be missed by callee but it won’t be reflected in event flow; but it will be reflected in call log.<br></li>
-<li>Phone numbers in notification (<code class="prettyprint">from</code> and <code class="prettyprint">to</code>) may be either E.164 phone numbers (with or without <code class="prettyprint">+</code>) or short extension numbers (e.g. &ldquo;101&rdquo;) for calls between extensions</li>
+<li>There is the known issue: notification with <code class="prettyprint">CallConnected</code> status comes after first leg is connected. So actually a call can be missed by callee but it won&rsquo;t be reflected in event flow; but it will be reflected in call log.<br></li>
+<li>Phone numbers in notification (<code class="prettyprint">from</code> and <code class="prettyprint">to</code>) may be either E.164 phone numbers (with or without <code class="prettyprint">+</code>) or short extension numbers (e.g. &#39;101&rsquo;) for calls between extensions</li>
 <li>For some RC phone system configurations when multiple devices are ringing for inbound call, you may get transitional notifications with <code class="prettyprint">NoCall</code> status which will be immediately followed by <code class="prettyprint">Ringing</code> or <code class="prettyprint">CallConnected</code> (for the same <code class="prettyprint">sessionId</code>).</li>
 </ul>
 
