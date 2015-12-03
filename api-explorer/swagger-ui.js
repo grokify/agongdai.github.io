@@ -31491,6 +31491,27 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
       e.preventDefault();
     }
     form = $('.sandbox', $(this.el));
+
+    // ===== BEGIN JCW OAUTH EDIT REQUEST =====
+    parDivId = $(form).parents("div:first").attr("id");
+
+    if (
+        parDivId == "Authentication_post_oauth_token_content" ||
+        parDivId == "Authentication_post_oauth_revoke_content"
+    ) {
+      $('#input_apiKey').val("");
+      window.authorizations.add("key", new SwaggerClient.ApiKeyAuthorization("Authorization", "", "header"));
+      authorization = form.find("input[name='Authorization']").val();
+      app_key       = form.find("input[name='app_key']").val();
+      app_secret    = form.find("input[name='app_secret']").val();
+      if ( app_key.length>0 && app_secret.length>0 ) {
+        authzVal = "Basic " + btoa(app_key + ":" + app_secret);
+        form.find("input[name='Authorization']").val(authzVal);
+        swaggerUi.api.clientAuthorizations.add("key", new SwaggerClient.ApiKeyAuthorization("Authorization", authzVal, "header"));
+      }
+    }
+    // ===== END JCW OAUTH EDIT REQUEST =====
+
     error_free = true;
     form.find('input.required').each(function() {
       $(this).removeClass('error');
