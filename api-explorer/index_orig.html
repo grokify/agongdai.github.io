@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
   <title>RingCentral Connect Platform API Explorer</title>
   <link href='css/typography.css' media='screen' rel='stylesheet' type='text/css'/>
   <link href='css/reset.css' media='screen' rel='stylesheet' type='text/css'/>
@@ -10,8 +9,6 @@
   <link href='css/screen.css' media='print' rel='stylesheet' type='text/css'/>
   <link href='css/api-explorer.css' media='screen' rel='stylesheet' type='text/css'/>
   <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="lib/tooltipster-master/css/tooltipster.css" />
   <script type="text/javascript" src="lib/shred.bundle.js"></script>
   <script src='lib/jquery-1.8.0.min.js' type='text/javascript'></script>
   <script src='lib/jquery.slideto.min.js' type='text/javascript'></script>
@@ -24,49 +21,13 @@
   <script src='swagger-ui.js' type='text/javascript'></script>
   <script src='lib/highlight.7.3.pack.js' type='text/javascript'></script>
   <script src='lib/marked.js' type='text/javascript'></script>
-  <script src='lib/jsoneditor_tooltipster.js' type='text/javascript'></script>
+  <script src='lib/jsoneditor.min.js' type='text/javascript'></script>
 
-  <script type="text/javascript" src="lib/tooltipster-master/js/jquery.tooltipster.js"></script>
+
 
   <!-- enabling this will enable oauth2 implicit scope support -->
   <script src='lib/swagger-oauth.js' type='text/javascript'></script>
   <script type="text/javascript">
-// BEGIN TOOLTIPSTER JS
-var init_jbe_tooltipster = function(tooltipster_config) {
-  var input = new RegExp('<input');
-  if (typeof tooltipster_config === 'undefined' || !tooltipster_config) {
-    tooltipster_config = {position: 'right'};
-  }
-  //alert("1");
-  $('label.jbeFormInputLabel').each(
-    function(i, el) {
-      if (input.test($(el).html())) {
-        return;
-      }
-      var desc = $(el).attr('title');
-      if (desc == 'undefined' || typeof desc == 'undefined' || !desc) {
-        return;
-      }
-      var title = document.createElement('span');
-      $(title).html($(el).html());
-      title.setAttribute("title", desc);
-      var i = document.createElement('i');
-      i.className = "fa fa-info-circle jbe-info-circle";
-      title.appendChild(i);
-      $(title).tooltipster(tooltipster_config);
-      el.setAttribute("title", "");
-      $(el).html("");
-      el.appendChild(title);
-    }
-  )
-}
-/*
-$(document).ready(function() {
-  var tooltipster_config = {theme: 'tooltipster-rc', minWidth: '300', maxWidth: '300', position: 'right'};
-  init_jbe_tooltipster(tooltipster_config);
-});
-*/
-// END TOOLTIPSTER JS
     $(function () {
       var url = window.location.search.match(/url=([^&]+)/);
       if (url && url.length > 1) {
@@ -90,8 +51,6 @@ $(document).ready(function() {
           $('pre code').each(function(i, e) {
             hljs.highlightBlock(e)
           });
-          var tooltipster_config = {theme: 'tooltipster-rc', minWidth: '300', maxWidth: '300', position: 'right'};
-          init_jbe_tooltipster(tooltipster_config);
         },
         onFailure: function(data) {
           log("Unable to Load SwaggerUI");
@@ -123,26 +82,13 @@ $(document).ready(function() {
 
       window.swaggerUi.load();
   });
-/*
-      $(document).ready(function() {
-        var tooltipster_config = {theme: 'tooltipster-default', minWidth: '300', maxWidth: '300', position: 'right'};
-        init_jbe_tooltipster(tooltipster_config);
-      });*/
   </script>
   <style type="text/css">
   #logo {
     width: 308px; height: 30px;
     background-image:url("./images/logo_ring_dev.png");
   }
-      /* BEGIN TOOLTIPSTER CSS */
-      .jbe-info-circle {
-        font-size: 80%;
-        margin-left: 0.3em;
-        color: #005DA0;
-      }
-      /* END TOOLTIPSTER CSS */
   </style>
-
 </head>
 <body class="api-explorer">
 <div class="swagger-section">
