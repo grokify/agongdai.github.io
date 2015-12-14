@@ -101,7 +101,6 @@ $(document).ready(function() {
       });
 
       function addApiKeyAuthorization() {
-        //var key = $('#input_apiKey')[0].value;
         var key = $('#input_apiKey_entry')[0].value;
         log("key: " + key);
         if(key && key.trim() != "") {
@@ -110,7 +109,6 @@ $(document).ready(function() {
         }
       }
 
-      //$('#input_apiKey').change(function() {
       $('#input_apiKey_entry').change(function() {
         addApiKeyAuthorization();
       });
@@ -124,11 +122,6 @@ $(document).ready(function() {
 
       window.swaggerUi.load();
   });
-/*
-      $(document).ready(function() {
-        var tooltipster_config = {theme: 'tooltipster-default', minWidth: '300', maxWidth: '300', position: 'right'};
-        init_jbe_tooltipster(tooltipster_config);
-      });*/
   </script>
   <style type="text/css">
   #logo {
