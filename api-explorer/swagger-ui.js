@@ -1865,9 +1865,9 @@ SuperagentHttpClient.prototype.execute = function (obj) {
 
       // ===== BEGIN JCW EDIT OAUTH RESPONSE =====
       if(response.obj !== null && typeof response.obj === "object") {
-        if (response.obj.hasOwnProperty('access_token')) {
+        if (response.obj.hasOwnProperty("access_token")) {
           var key = response.obj.access_token;
-          $('#input_apiKey_entry').val(key);
+          $("#input_apiKey_entry").val(key);
           var keyAuth = new SwaggerClient.ApiKeyAuthorization("Authorization", "Bearer " + key, "header");
           window.swaggerUi.api.clientAuthorizations.add("key", keyAuth);
         }
@@ -31510,7 +31510,7 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
         parDivId == "Authentication_post_oauth_token_content" ||
         parDivId == "Authentication_post_oauth_revoke_content"
     ) {
-      $('#input_apiKey_entry').val("");
+      $("#input_apiKey_entry").val("");
       window.swaggerUi.api.clientAuthorizations.add("key", new SwaggerClient.ApiKeyAuthorization("Authorization", "", "header"));
       authorization = form.find("input[name='Authorization']").val();
       app_key       = form.find("input[name='app_key']").val();
