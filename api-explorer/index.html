@@ -33,12 +33,13 @@
 
 // BEGIN JSON EDITOR TOOLTIPSTER JS
 var init_je_tooltipster = function(tooltipster_config) {
-  var input = new RegExp('<input');
+  //var input = new RegExp('<input');
+  var input = new RegExp('<');
   if (typeof tooltipster_config === 'undefined' || !tooltipster_config) {
     tooltipster_config = {position: 'right'};
   }
 
-  $('label.jbeFormInputLabel').each(
+  $('label.jeFormInputLabel').each(
     function(i, el) {
       if (input.test($(el).html())) {
         return;
@@ -87,6 +88,9 @@ var init_je_tooltipster = function(tooltipster_config) {
           });
           var tooltipster_config = {theme: 'tooltipster-rc', minWidth: '300', maxWidth: '300', position: 'right'};
           init_je_tooltipster(tooltipster_config);
+          $('.json-editor-btn-add').bind("click", function() {
+            init_je_tooltipster(tooltipster_config);
+          });
         },
         onFailure: function(data) {
           log("Unable to Load SwaggerUI");
