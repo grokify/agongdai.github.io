@@ -1743,7 +1743,6 @@ JQueryHttpClient.prototype.execute = function (obj) {
   delete obj.body;
 
   obj.complete = function (response) {
-    alert("JCW_RESPONSE_1");
     var headers = {};
     var headerArray = response.getAllResponseHeaders().split('\n');
 
@@ -1864,7 +1863,7 @@ SuperagentHttpClient.prototype.execute = function (obj) {
       // null means we can't parse into object
       response.obj = possibleObj || null;
 
-      // BEGIN JCW EDIT
+      // ===== BEGIN JCW EDIT OAUTH RESPONSE =====
       if(response.obj !== null && typeof response.obj === "object") {
         if (response.obj.hasOwnProperty('access_token')) {
           var key = response.obj.access_token;
@@ -1873,7 +1872,7 @@ SuperagentHttpClient.prototype.execute = function (obj) {
           window.swaggerUi.api.clientAuthorizations.add("key", keyAuth);
         }
       }
-      // END JCW EDIT
+      // ===== END JCW EDIT OAUTH RESPONSE =====
 
       response.status = res.status;
       response.statusText = res.text;
@@ -31504,7 +31503,7 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
     }
     form = $('.sandbox', $(this.el));
 
-    // ===== BEGIN JCW OAUTH EDIT REQUEST =====
+    // ===== BEGIN JCW EDIT OAUTH REQUEST =====
     parDivId = $(form).parents("div:first").attr("id");
 
     if (
@@ -31522,7 +31521,7 @@ SwaggerUi.Views.OperationView = Backbone.View.extend({
         window.swaggerUi.api.clientAuthorizations.add("key", new SwaggerClient.ApiKeyAuthorization("Authorization", authzVal, "header"));
       }
     }
-    // ===== END JCW OAUTH EDIT REQUEST =====
+    // ===== END JCW EDIT OAUTH REQUEST =====
 
     error_free = true;
     form.find('input.required').each(function() {
