@@ -7,7 +7,7 @@
     "title": "RingCentral Connect Platform API Explorer",
     "termsOfService": "https://developer.ringcentral.com"
     },
-  "host": "platform.devtest.ringcentral.com",
+  "host": "api-up.lab.rcch.ringcentral.com",
   "basePath": "/restapi",
   "tags": [
     {
