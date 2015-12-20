@@ -2053,7 +2053,7 @@ JSONEditor.defaults.editors.string = JSONEditor.AbstractEditor.extend({
 
     if(this.format) this.input.setAttribute('data-schemaformat',this.format);
 
-    this.label.setAttribute("title", this.schema.description); // TOOLTIPSTER
+    this.label.setAttribute("title", this.schema.description); // TOOLTIPSTER LABEL
     this.control = this.theme.getFormControl(this.label, this.input, this.description);
     this.container.appendChild(this.control);
 
@@ -2565,7 +2565,8 @@ JSONEditor.defaults.editors.object = JSONEditor.AbstractEditor.extend({
     else {
       this.header = document.createElement('span');
       this.header.textContent = this.getTitle();
-      this.title = this.theme.getHeader(this.header);
+      //this.title = this.theme.getHeader(this.header);
+      this.title = this.theme.getHeader(this.header, this.schema.description); // TOOLTIPSTER HEADER
       this.container.appendChild(this.title);
       this.container.style.position = 'relative';
 
@@ -3224,7 +3225,8 @@ JSONEditor.defaults.editors.array = JSONEditor.AbstractEditor.extend({
     if(!this.options.compact) {
       this.header = document.createElement('span');
       this.header.textContent = this.getTitle();
-      this.title = this.theme.getHeader(this.header);
+      //this.title = this.theme.getHeader(this.header);
+      this.title = this.theme.getHeader(this.header, this.schema.description); // TOOLTIPSTER HEADER
       this.container.appendChild(this.title);
       this.title_controls = this.theme.getHeaderButtonHolder();
       this.title.appendChild(this.title_controls);
@@ -3894,7 +3896,8 @@ JSONEditor.defaults.editors.table = JSONEditor.defaults.editors.array.extend({
     this.width = tmp.getNumColumns() + 2;
 
     if(!this.options.compact) {
-      this.title = this.theme.getHeader(this.getTitle());
+      //this.title = this.theme.getHeader(this.getTitle());
+      this.title = this.theme.getHeader(this.header, this.schema.description); // TOOLTIPSTER HEADER
       this.container.appendChild(this.title);
       this.title_controls = this.theme.getHeaderButtonHolder();
       this.title.appendChild(this.title_controls);
@@ -6080,7 +6083,7 @@ JSONEditor.AbstractTheme = Class.extend({
   },
   getFormInputLabel: function(text) {
     var el = document.createElement('label');
-    el.className = el.className + " jeFormInputLabel";
+    el.className = el.className + " json-editor-tooltip"; // TOOLTIPSTER CLASS
     el.appendChild(document.createTextNode(text));
     return el;
   },
@@ -6089,12 +6092,18 @@ JSONEditor.AbstractTheme = Class.extend({
     el.style.fontWeight = 'normal';
     return el;
   },
-  getHeader: function(text) {
+  getHeader: function(text,description) {
     var el = document.createElement('h3');
     if(typeof text === "string") {
       el.textContent = text;
+      el.className = el.className + " json-editor-tooltip"; // TOOLTIPSTER CLASS
+      el.setAttribute("title", description);
     }
     else {
+      if(text.tagName === "SPAN") {
+        text.className = text.className + " json-editor-tooltip"; // TOOLTIPSTER CLASS
+        text.setAttribute("title", description);
+      }
       el.appendChild(text);
     }
 
